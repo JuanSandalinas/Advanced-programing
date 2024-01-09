@@ -1,6 +1,16 @@
-#include helper.h
+#include <algorithm>
+#include <fstream>
+#include <iostream>
+#include <map>
+#include <memory>
+#include <random>
+#include <sstream>
+#include <string>
+#include <vector>
 
-void write_to_csv(std::vector<unsigned int> &global_cases, std::string filename = "./global_cases.csv")
+#include "helper.h"
+
+void write_to_csv(std::vector<unsigned int> &global_cases, std::string filename)
 {
     /*
      * Generates a csv (comma separated values) of (country, cases).
@@ -82,16 +92,6 @@ std::ostream &operator<<(std::ostream &os, std::vector<double> vec)
     os << '\n';
     return os;
 }
-
-struct DataFrame
-{
-    std::vector<std::string> regions;
-    std::vector<unsigned> population;
-    // cases[i] is a vector containing
-    // daily cases observed in regions[i]
-    // for multiple days.
-    std::vector<std::vector<unsigned>> cases;
-};
 
 std::unique_ptr<DataFrame> read_from_csv(std::string filename)
 {
