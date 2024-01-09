@@ -1,0 +1,10 @@
+CXX = g++
+CXXFLAGS = -g -Wall
+caseTrack: caseTrack.o mysquare.o
+	$(CXX) -o caseTrack caseTrack.o helper.o $(CXXFLAGS) 
+caseTrack.o: caseTrack.cpp helper.h
+	$(CXX) -c -o caseTrack.o caseTrack.cpp $(CXXFLAGS)
+helper.o: helper.cpp
+	$(CXX) -c -o helper.o helper.cpp $(CXXFLAGS)
+clean:
+	rm -f caseTrack *.o

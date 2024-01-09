@@ -1,5 +1,10 @@
 #ifndef HELPER_H
 #define HELPER_H
+#include <iostream>
+#include <map>
+#include <memory>
+#include <string>
+#include <vector>
 
 inline auto num_countries = 195;
 inline std::vector<std::string> countries = {"Afghanistan", "Albania", "Algeria", "Andorra", "Angola",
@@ -26,12 +31,20 @@ inline std::vector<std::string> countries = {"Afghanistan", "Albania", "Algeria"
                                              "Ukraine", "United Arab Emirates", "United Kingdom", "United States of America", "Uruguay", "Uzbekistan", "Vanuatu",
                                              "Venezuela", "Vietnam", "Yemen", "Zambia", "Zimbabwe"};
 
+struct DataFrame
+{
+    std::vector<std::string> regions;
+    std::vector<unsigned> population;
+    // cases[i] is a vector containing
+    // daily cases observed in regions[i]
+    // for multiple days.
+    std::vector<std::vector<unsigned>> cases;
+};
 void write_to_csv(std::vector<unsigned int> &global_cases, std::string filename = "./global_cases.csv");
 void populate_vector(std::vector<unsigned int> &global_cases);
 std::ostream &operator<<(std::ostream &os, std::vector<unsigned> vec);
 std::ostream &operator<<(std::ostream &os, std::vector<double> vec);
 std::unique_ptr<DataFrame> read_from_csv(std::string filename = "ecdc_cases_june.csv");
 std::map<std::string, std::vector<double>> normalize_per_capita(std::unique_ptr<DataFrame> &data_frame);
-struct DataFrame;
 
 #endif
