@@ -5,11 +5,13 @@
 #include "Student.h"
 #include "StudentCard.h"
 
-void describe_course(std::shared_ptr<const Course> course) {
-  // TODO: Implement (call the describe() of the course)
+void describe_course(std::shared_ptr<const Course> course)
+{
+  course->describe();
 }
 
-int main() {
+int main()
+{
 
   // When we create a university, we first create study programs.
   // Each study program defines its own courses internally.

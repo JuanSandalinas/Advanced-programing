@@ -5,7 +5,8 @@
 #include <memory>
 #include <vector>
 
-class Curriculum {
+class Curriculum
+{
 private:
   std::vector<std::shared_ptr<Course>> _available_courses;
 

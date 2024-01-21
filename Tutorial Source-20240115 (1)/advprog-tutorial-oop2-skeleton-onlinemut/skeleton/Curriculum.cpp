@@ -7,8 +7,26 @@
 #include <memory>
 #include <vector>
 
-// TODO: Implement the constructor
+Curriculum::Curriculum()
+{
+    _available_courses.push_back(std::make_shared<Lecture>("1234E", "15/10/24"));
+    _available_courses.push_back(std::make_shared<Practical>("3456F", "5"));
+    print_courses()
+}
 
-// TODO: Implement print_courses()
-
-// TODO: Implement request(std::string id) (the linker will complain till you do that)
+Curriculum::print_courses()
+{
+    for (const auto &course : _available_courses)
+    {
+        std::cout << course->id() << std::endl
+    }
+}
+Curriculum::std::shared_ptr<const Course> request(std::string id) const
+{
+    for (auto const &course : _available_courses)
+    {
+        if (course->id() == id)
+            return course;
+    }
+    throw(std::runtime_error("Course with id " + id + " not found in available courses."));
+}

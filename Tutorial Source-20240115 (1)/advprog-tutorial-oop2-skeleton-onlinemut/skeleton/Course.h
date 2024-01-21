@@ -3,25 +3,21 @@
 
 #include <string>
 
-// TODO: Remove CourseType from everywhere after implementing concrete types
-enum class CourseType { Lecture, Seminar, Practical };
-
-class Course {
+class Course
+{
 protected:
   std::string _id;
-  CourseType _type;
 
 public:
-  Course(std::string, CourseType);
+  Course(std::string);
 
   std::string id() const;
 
-  std::string type() const;
+  virtual std::string type() const = 0;
 
-  // TODO: Add describe()
+  virtual void describe() const = 0;
 
-  // TODO: Declare the destructor as virtual (why?)
-  ~Course() = default;
+  virtual ~Course() = default;
 };
 
 #endif // COURSE_Η
